@@ -71,44 +71,51 @@
     </style>
 </head>
 <body>
-<c:import url="userLink.jsp"> </c:import>
-<table>
-    <c:set var = "free" value = "free"/>
-    <p>${errorMsg}</p>
+<div class="wrapper">
 
-<c:if test="${schedulePointList.size() > 0}">
-    <tr>
-        <th>Date</th>
-        <th>Time start</th>
-        <th>Time end</th>
-        <th>Service</th>
-        <th>Staffer</th>
-        <th>Available status</th>
-    </tr>
-</c:if>
+    <div class="content">
+        <c:import url="userLink.jsp"> </c:import>
+        <h1>Schedule by you request</h1>
+        <table>
+            <c:set var = "free" value = "free"/>
+            <p>${errorMsg}</p>
 
-<c:forEach var="film" items="${schedulePointList}" varStatus="i">
-    <tr>
-        <td> ${film.dateStart}</td>
-        <td> ${film.timeStart}</td>
-        <td> ${film.timeEnd}</td>
-        <td> ${film.service.name}</td>
-        <td> ${film.staffer.firstName}  ${film.staffer.lastName}</td>
-        <td> ${film.availableStatus == free} <c:if test="${film.availableStatus == free}" >
-            <form:form  action="/createApp" method="post">
+            <c:if test="${schedulePointList.size() > 0}">
+                <tr>
+                    <th>Date</th>
+                    <th>Time start</th>
+                    <th>Time end</th>
+                    <th>Service</th>
+                    <th>Staffer</th>
+                    <th>Available status</th>
+                </tr>
+            </c:if>
 
-                <div class="container">
-                    <input type="text" name="id" id = "id" required value="${film.schedulePointId}" hidden>
-                    <input type="text" name="userId" required value="${user.userId}" hidden>
-                    <button type="submit">Assign this time for me</button>
-                </div>
+            <c:forEach var="film" items="${schedulePointList}" varStatus="i">
+                <tr>
+                    <td> ${film.dateStart}</td>
+                    <td> ${film.timeStart}</td>
+                    <td> ${film.timeEnd}</td>
+                    <td> ${film.service.name}</td>
+                    <td> ${film.staffer.firstName}  ${film.staffer.lastName}</td>
+                    <td> ${film.availableStatus == free} <c:if test="${film.availableStatus == free}" >
+                        <br/>
+                        <br/>
+                        <form:form  action="/createApp" method="post">
 
-            </form:form>
-        </c:if>
-        </td>
-    </tr>
+                            <div class="container">
+                                <input type="text" name="id" id = "id" required value="${film.schedulePointId}" hidden>
+                                <input type="text" name="userId" required value="${user.userId}" hidden>
+                                <button class="far fa-check-circle" type="submit">Assign this time for me</button>
+                            </div>
 
-</c:forEach>
-</table>
+                        </form:form>
+                    </c:if>
+                    </td>
+                </tr>
+
+            </c:forEach>
+        </table>
+    </div></div>
 </body>
 </html>

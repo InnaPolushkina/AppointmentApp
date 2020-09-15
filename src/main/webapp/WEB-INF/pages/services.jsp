@@ -71,39 +71,44 @@
     </style>
 </head>
 <body>
-<h1>All services</h1>
-<c:import url="userLink.jsp"> </c:import>
-<table class="blueTable">
-    <c:if test="${serviceList.size() > 0}">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Duration</th>
-            <th>Price</th>
-            <th>Action</th>
-        </tr>
-    </c:if>
+<div class="wrapper">
 
-    <c:forEach var="film" items="${serviceList}" varStatus="i">
-        <tr>
-            <td> ${film.name}</td>
-            <td> ${film.description}</td>
-            <td> ${film.duration} minutes</td>
-            <td> ${film.price} $</td>
-            <td>
-                <form:form  action="/scheduler" method="post">
+    <div class="content">
+        <h1>All services</h1>
 
-                    <div class="container">
-                        <input type="text" name="id" id = "id" required value="${film.serviceId}" hidden>
-                        <input type="text" name="userId" required value="${user.userId}" hidden>
-                        <button type="submit">Create appointment with with service</button>
-                    </div>
+        <table class="blueTable">
+            <c:if test="${serviceList.size() > 0}">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </c:if>
 
-                </form:form>
-            </td>
-        </tr>
+            <c:forEach var="film" items="${serviceList}" varStatus="i">
+            <tr>
+                <td> ${film.name}</td>
+                <td> ${film.description}</td>
+                <td> ${film.duration} minutes</td>
+                <td> ${film.price} $</td>
+                <td>
+                    <form:form  action="/scheduler" method="post">
 
-    </c:forEach>
+                        <div class="container">
+                            <input type="text" name="id" id = "id" required value="${film.serviceId}" hidden>
+                            <input type="text" name="userId" required value="${user.userId}" hidden>
+                            <button class="far fa-plus-square" type="submit">Create appointment with with service</button>
+                        </div>
+
+                    </form:form>
+                </td>
+            </tr>
+
+            </c:forEach>
+
+    </div></div>
 </table>
 
 </body>

@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1><a>${user.firstName}</a></h1>
+<h1><a hidden>${user.firstName}</a></h1>
 </body>
 </html>

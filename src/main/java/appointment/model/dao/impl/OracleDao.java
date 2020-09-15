@@ -3,14 +3,9 @@ package appointment.model.dao.impl;
 import appointment.model.dao.Dao;
 import appointment.model.entities.*;
 import org.apache.log4j.Logger;
-import org.springframework.jdbc.support.xml.SqlXmlFeatureNotImplementedException;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +26,8 @@ public class OracleDao implements Dao {
     public void connect() throws SQLException {
        try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-           // Class.forName("org.springframework.jdbc.datasource.DriverManagerDataSource");
             connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","SYSTEM","system");
             if ( connection.isClosed()) {
-                //System.out.println("Connection successfully  . . .");
                 LOGGER.error("connection to db is failed");
                 throw new SQLException("connection failed !!!");
             }
@@ -42,11 +35,10 @@ public class OracleDao implements Dao {
        catch (Exception ex) {
            LOGGER.error("error while connecting to data base");
            throw new SQLException(ex.getMessage(), "can't connect to db");
-
         }
     }
 
-    public static void main(String [] args) throws Exception{
+   // public static void main(String [] args) throws Exception{
         OracleDao oracleDao = OracleDao.getInstance();
         /*SchedulePoint schedulePoint = oracleDao.getSchedulePointById(4);
         System.out.println("schedulePoint = \n" + schedulePoint.toString());
@@ -67,9 +59,9 @@ public class OracleDao implements Dao {
         //System.out.println(oracleDao.findSchedulePointByService(new Service(1)));
 
 
-        Staffer staffer = oracleDao.getStafferById(4);
+/*        Staffer staffer = oracleDao.getStafferById(4);
         System.out.println(oracleDao.findSchedulePointByStaffer(staffer).toString());
-    }
+    //}*/
 
     private void disconnect() {
         try {

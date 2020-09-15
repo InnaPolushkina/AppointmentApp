@@ -71,37 +71,41 @@
     </style>
 </head>
 <body>
-<h1>All Staffers</h1>
-<table class="blueTable">
-    <c:if test="${stafferList.size() > 0}">
-        <tr>
-            <th>Name</th>
-            <th>Job position</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-        </tr>
-    </c:if>
+<div class="wrapper">
 
-    <c:forEach var="film" items="${stafferList}" varStatus="i">
-        <tr>
-            <td> ${film.firstName} ${film.lastName}</td>
-            <td> ${film.jobPosition}</td>
-            <td> ${film.email}</td>
-            <td> ${film.phoneNumber}</td>
-            <td>
-                <form:form  action="/schedulerByStaffer" method="post">
+    <div class="content">
+        <h1>All Staffers</h1>
+        <table class="blueTable">
+            <c:if test="${stafferList.size() > 0}">
+                <tr>
+                    <th>Name</th>
+                    <th>Job position</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                </tr>
+            </c:if>
 
-                    <div class="container">
-                        <input type="text" name="id" id = "id" required value="${film.stafferId}" hidden>
+            <c:forEach var="film" items="${stafferList}" varStatus="i">
+                <tr>
+                    <td> ${film.firstName} ${film.lastName}</td>
+                    <td> ${film.jobPosition}</td>
+                    <td> ${film.email}</td>
+                    <td> ${film.phoneNumber}</td>
+                    <td>
+                        <form:form  action="/schedulerByStaffer" method="post">
 
-                        <button type="submit">Create appointment with with service</button>
-                    </div>
+                            <div class="container">
+                                <input type="text" name="id" id = "id" required value="${film.stafferId}" hidden>
 
-                </form:form>
-            </td>
-        </tr>
+                                <button class="far fa-plus-square" type="submit">Create appointment with with staffer</button>
+                            </div>
 
-    </c:forEach>
-</table>
+                        </form:form>
+                    </td>
+                </tr>
+
+            </c:forEach>
+        </table>
+    </div></div>
 </body>
 </html>

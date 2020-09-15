@@ -70,26 +70,36 @@
     </style>
 </head>
 <body>
-<form:form  action="/register" method="post">
+<div class="wrapper">
 
-    <div class="container">
-        <p> ${error}</p>
-        <label><b>Fist name</b></label>
-        <input type="text" placeholder="Enter Username" name="firstName" id = "firstName" required>
+    <div class="content">
+        <h1>Register in the system</h1>
+        <form:form  action="/register" method="post">
 
-        <label><b>Last name</b></label>
-        <input type="text" placeholder="Enter Username" name="lastName" id = "lastName" required>
+            <div class="container">
+                <p> ${error}</p>
+                <div class="top">
+                    <label class="label"><b>Fist name</b></label>
+                    <input type="text" placeholder="Enter Username" name="firstName" id = "firstName" required>
 
+                    <label class="label"><b>Last name</b></label>
+                    <input type="text" placeholder="Enter Username" name="lastName" id = "lastName" required>
 
-        <label><b>Email</b></label>
-        <input type="email" placeholder="Enter Username" name="email" id = "email" required>
+                </div>
+                <div class="top">
+                    <label class="label"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Username" name="email" id = "email" required>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" id = "password" required>
+                    <label class="label"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="password" id = "password" required>
+                </div>
+                <br>
 
-        <button type="submit">Login</button>
+                <button type="submit">Register</button>
+            </div>
+
+        </form:form>
     </div>
-
-</form:form>
+</div>
 </body>
 </html>
